@@ -35,7 +35,7 @@ const NavBar = () => {
       </li>
       <li>
         <Link
-          to="/contact"
+          to="/signin"
           className="text-white py-2 px-4 block md:inline-block hover:bg-stone-700 rounded-lg"
         >
           Sign In
@@ -43,7 +43,7 @@ const NavBar = () => {
       </li>
       <li>
         <Link
-          to="/contact"
+          to="/signup"
           className="text-white py-2 px-4 block md:inline-block hover:bg-stone-700 rounded-lg"
         >
           Sign Up
