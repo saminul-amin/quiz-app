@@ -13,7 +13,7 @@ const Login = () => {
   };
 
   return (
-    <div className="flex justify-center items-center min-h-screen bg-gradient-to-b from-white to-stone-300">
+    <div className="py-12 flex justify-center items-center min-h-screen bg-gradient-to-b from-white to-stone-300">
       <div className="bg-white p-8 rounded-lg shadow-md w-96 lg:w-1/3">
         <h2 className="text-2xl font-bold text-center mb-3">Login</h2>
         <p className="text-center mb-6">

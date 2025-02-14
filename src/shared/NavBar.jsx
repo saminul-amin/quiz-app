@@ -19,10 +19,10 @@ const NavBar = () => {
       </li>
       <li>
         <Link
-          to="/about"
+          to="/quizzes"
           className="text-white py-2 px-4 block md:inline-block hover:bg-stone-700 rounded-lg"
         >
-          About
+          Quizzes
         </Link>
       </li>
       <li>
