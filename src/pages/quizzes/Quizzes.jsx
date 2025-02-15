@@ -2,26 +2,43 @@ import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
 import { motion } from "framer-motion";
-// import { Button } from "@/components/ui/button";
+import LoadingSpinner from "../../shared/LoadingSpinner";
+
+import "@fontsource/galada";
+import '@fontsource/tiro-bangla';
 
 const fetchQuizzes = async () => {
-//   const { data } = await axios.get("http://localhost:5000/quizzes");
   const { data } = await axios.get("/quizzes.json");
   return data;
 };
 
 export default function Quizzes() {
-  const { data: quizzes, isLoading, error } = useQuery({ queryKey: ["quizzes"], queryFn: fetchQuizzes });
+  const {
+    data: quizzes,
+    isLoading,
+    error,
+  } = useQuery({ queryKey: ["quizzes"], queryFn: fetchQuizzes });
   const [selectedQuiz, setSelectedQuiz] = useState(null);
 
-  if (isLoading) return <div className="text-center mt-10">Loading...</div>;
-  if (error) return <div className="text-center mt-10 text-red-500">Error fetching quizzes</div>;
-
-  console.log(quizzes.quizzes);
+  if (isLoading)
+    return (
+      <div className="text-center mt-10">
+        <LoadingSpinner />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="text-center mt-10 text-red-500">
+        Error fetching quizzes
+      </div>
+    );
 
   return (
-    <div className="container mx-auto px-4 py-8">
-      <h1 className="text-2xl font-bold text-center mb-6">Available Quizzes</h1>
+    <div className="container mx-auto px-4 py-12 max-w-6xl">
+      <h1 className="text-3xl font-extrabold text-center mb-4 text-stone-600">
+        Available Quizzes
+      </h1>
+      <p className="text-center mb-6 text-stone-600">A Fun Way to Learn—Select Your Quiz Now!</p>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {quizzes.quizzes.map((quiz) => (
           <motion.div
@@ -29,23 +46,61 @@ export default function Quizzes() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="p-4 bg-white shadow-lg rounded-lg border"
+            className="p-6 bg-gradient-to-b from-stone-200 to-slate-200 shadow-xl rounded-2xl border transform transition-all hover:scale-105 hover:shadow-2xl"
           >
-            <h2 className="text-lg font-semibold">{quiz.title}</h2>
-            <p className="text-gray-600 mt-2">{quiz.shortDescription}</p>
-            <button className="mt-4" onClick={() => setSelectedQuiz(quiz)}>See Details</button>
+            <h2 className="text-xl font-semibold text-stone-800 mb-2" style={{ fontFamily: 'Tiro Bangla, serif' }}>
+              {quiz.title}
+            </h2>
+            <p className="text-xs bg-slate-300 px-4 py-1 rounded-full object-fit badge mb-2">
+              {quiz.difficulty}
+            </p>
+            <p className="text-stone-700 mb-2">{quiz.description}</p>
+            <p className="text-stone-700 mb-2 font-bold">
+              Total Questions:{" "}
+              <span className="font-normal" style={{ fontFamily: 'Tiro Bangla, serif' }}>{quiz.questions}</span>
+            </p>
+            <p className="text-stone-700 mb-4 font-bold">
+              Setter: <span className="font-normal">{quiz.setter}</span>
+            </p>
+            <div className="flex justify-end">
+              <button
+                className="px-4 py-2 bg-stone-500 text-white font-semibold rounded-full shadow-md hover:bg-stone-700 transition"
+                onClick={() => setSelectedQuiz(quiz)}
+              >
+                See Details
+              </button>
+            </div>
           </motion.div>
         ))}
       </div>
-      
-      {/* Quiz Details Modal using DaisyUI */}
+
+      {/* Quiz Details Modal */}
       {selectedQuiz && (
         <div className="modal modal-open">
-          <div className="modal-box">
-            <h2 className="font-bold text-lg">{selectedQuiz.title}</h2>
-            <p className="py-4">{selectedQuiz.description}</p>
-            <div className="modal-action">
-              <button className="btn" onClick={() => setSelectedQuiz(null)}>Close</button>
+          <div className="modal-box bg-white shadow-lg rounded-lg p-6">
+            <h2 className="font-bold text-lg text-stone-800">
+              {selectedQuiz.title}
+            </h2>
+            <p className="py-4 text-stone-700">{selectedQuiz.description}</p>
+            <p className="text-stone-700 mb-2 font-bold">
+              Difficulty: <span className="font-normal">{selectedQuiz.difficulty}</span>
+            </p>
+            <p className="text-stone-700 mb-2 font-bold">
+              Total Questions: <span className="font-normal">{selectedQuiz.questions}</span>
+            </p>
+            <p className="text-stone-700 mb-4 font-bold">
+              Setter: <span className="font-normal">{selectedQuiz.setter}</span>
+            </p>
+            <div className="modal-action flex justify-center gap-4">
+              <button
+                className="btn bg-stone-200 rounded-full px-4 py-2 hover:bg-stone-400 text-md"
+                onClick={() => setSelectedQuiz(null)}
+              >
+                Cancel
+              </button>
+              <button className="btn bg-stone-500 text-white rounded-full px-4 py-2 hover:bg-stone-700 text-md">
+                Start Quiz
+              </button>
             </div>
           </div>
         </div>

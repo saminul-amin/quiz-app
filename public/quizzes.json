@@ -2,11 +2,12 @@
     "quizzes": [
         {
             "id": 1,
-            "title": "JavaScript Basics",
+            "title": "৪০ হাদিস",
             "description": "Test your knowledge on JavaScript fundamentals.",
             "difficulty": "Beginner",
-            "questions": 10,
+            "questions": "৩০",
             "time_limit": 10,
+            "setter": "Md. Saminul Amin",
             "type": "Open"
         },
         {
@@ -16,6 +17,7 @@
             "difficulty": "Intermediate",
             "questions": 15,
             "time_limit": 15,
+            "setter": "Md. Saminul Amin",
             "type": "Private"
         },
         {
@@ -25,6 +27,7 @@
             "difficulty": "Advanced",
             "questions": 12,
             "time_limit": 12,
+            "setter": "Md. Saminul Amin",
             "type": "Open"
         },
         {
@@ -34,6 +37,7 @@
             "difficulty": "Intermediate",
             "questions": 10,
             "time_limit": 10,
+            "setter": "Md. Saminul Amin",
             "type": "Private"
         },
         {
@@ -43,6 +47,7 @@
             "difficulty": "Advanced",
             "questions": 20,
             "time_limit": 20,
+            "setter": "Md. Saminul Amin",
             "type": "Open"
         }
     ]

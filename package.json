@@ -11,6 +11,8 @@
   },
   "dependencies": {
     "@fontsource/amiri": "^5.1.1",
+    "@fontsource/galada": "^5.1.1",
+    "@fontsource/tiro-bangla": "^5.1.1",
     "@tanstack/react-query": "^5.66.0",
     "axios": "^1.7.9",
     "firebase": "^11.3.1",
