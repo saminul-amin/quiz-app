@@ -3,9 +3,18 @@ import { Link } from "react-router-dom";
 import { Menu, X } from "lucide-react";
 
 import "@fontsource/amiri";
+import useAuth from "../hooks/useAuth";
 
 const NavBar = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { user, userLogOut } = useAuth();
+  //   console.log(user.email);
+
+  const handleLogOut = () => {
+    userLogOut()
+      .then(() => console.log("logged out"))
+      .catch((err) => console.log(err));
+  };
 
   const links = (
     <>
@@ -33,22 +42,37 @@ const NavBar = () => {
           Contact
         </Link>
       </li>
-      <li>
-        <Link
-          to="/signin"
-          className="text-white py-2 px-4 block md:inline-block hover:bg-stone-700 rounded-lg"
-        >
-          Sign In
-        </Link>
-      </li>
-      <li>
-        <Link
-          to="/signup"
-          className="text-white py-2 px-4 block md:inline-block hover:bg-stone-700 rounded-lg"
-        >
-          Sign Up
-        </Link>
-      </li>
+      {user?.email ? (
+        <>
+          <li>
+            <button
+              onClick={handleLogOut}
+              className="text-white py-2 px-4 block md:inline-block hover:bg-stone-700 rounded-lg"
+            >
+              Sign Out
+            </button>
+          </li>
+        </>
+      ) : (
+        <>
+          <li>
+            <Link
+              to="/signin"
+              className="text-white py-2 px-4 block md:inline-block hover:bg-stone-700 rounded-lg"
+            >
+              Sign In
+            </Link>
+          </li>
+          <li>
+            <Link
+              to="/signup"
+              className="text-white py-2 px-4 block md:inline-block hover:bg-stone-700 rounded-lg"
+            >
+              Sign Up
+            </Link>
+          </li>
+        </>
+      )}
     </>
   );
 

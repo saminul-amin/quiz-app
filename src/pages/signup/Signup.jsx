@@ -1,5 +1,6 @@
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
+import useAuth from "../../hooks/useAuth";
 
 const Signup = () => {
   const {
@@ -8,9 +9,15 @@ const Signup = () => {
     watch,
     formState: { errors },
   } = useForm();
+  const { createUser } = useAuth();
 
   const onSubmit = (data) => {
-    console.log(data);
+    console.log(data.name);
+    createUser(data.email, data.password)
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((err) => console.log(err));
   };
 
   return (
@@ -23,18 +30,15 @@ const Signup = () => {
         <form onSubmit={handleSubmit(onSubmit)}>
           {/* Full Name */}
           <div className="mb-4">
-            <label
-              className="block text-sm font-medium mb-2"
-              htmlFor="fullName"
-            >
+            <label className="block text-sm font-medium mb-2" htmlFor="name">
               Full Name
             </label>
             <input
-              id="fullName"
+              id="name"
               type="text"
               placeholder="Enter your Full Name"
               className="w-full p-2 border border-gray-300 rounded-md"
-              {...register("fullName", {
+              {...register("name", {
                 required: "Full Name is required",
                 minLength: {
                   value: 3,
@@ -42,10 +46,8 @@ const Signup = () => {
                 },
               })}
             />
-            {errors.fullName && (
-              <p className="text-red-500 text-xs mt-1">
-                {errors.fullName.message}
-              </p>
+            {errors.name && (
+              <p className="text-red-500 text-xs mt-1">{errors.name.message}</p>
             )}
           </div>
 

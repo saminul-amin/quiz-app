@@ -1,11 +1,10 @@
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 
 const HeroSection = () => {
   return (
-    <section className="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center text-center md:text-left px-6 md:px-16 bg-gradient-to-b from-stone-100 to-stone-300 overflow-hidden" >
-      <div
-        className="max-w-6xl mx-auto"
-      >
+    <section className="relative w-full min-h-screen flex flex-col md:flex-row items-center justify-center text-center md:text-left px-6 md:px-16 bg-gradient-to-b from-stone-100 to-stone-300 overflow-hidden">
+      <div className="max-w-6xl mx-auto">
         {/* Text Content */}
         <motion.div
           className="flex-1 space-y-6"
@@ -20,7 +19,7 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
           >
-            Test Your Knowledge, Challenge Yourself!"
+            Test Your Knowledge, Challenge Yourself!
           </motion.h1>
 
           {/* Subheading */}
@@ -41,12 +40,16 @@ const HeroSection = () => {
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.7 }}
           >
-            <button className="px-6 py-3 bg-stone-500 text-white font-semibold rounded-full shadow-lg hover:bg-stone-700 transition transform hover:scale-105">
-              Sign Up & Start Quizzing
-            </button>
-            <button className="px-6 py-3 bg-white text-blue-800 font-semibold rounded-full shadow-lg hover:bg-stone-300 transition transform hover:scale-105">
-              Explore Open Quizzes
-            </button>
+            <Link to="/signup">
+              <button className="px-6 py-3 bg-stone-500 text-white font-semibold rounded-full shadow-lg hover:bg-stone-700 transition transform hover:scale-105">
+                Sign Up & Start Quizzing
+              </button>
+            </Link>
+            <Link to="/quizzes">
+              <button className="px-6 py-3 bg-white text-blue-800 font-semibold rounded-full shadow-lg hover:bg-stone-300 transition transform hover:scale-105">
+                Explore Open Quizzes
+              </button>
+            </Link>
           </motion.div>
         </motion.div>
       </div>
