@@ -1,21 +1,43 @@
 import { useForm } from "react-hook-form";
 import { FaGoogle } from "react-icons/fa";
 import useAuth from "../../hooks/useAuth";
+import Swal from "sweetalert2";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
 const Signup = () => {
   const {
     register,
     handleSubmit,
     watch,
+    reset,
     formState: { errors },
   } = useForm();
   const { createUser } = useAuth();
+  const navigate = useNavigate();
 
   const onSubmit = (data) => {
     console.log(data.name);
     createUser(data.email, data.password)
       .then((result) => {
         console.log(result.user);
+        Swal.fire({
+          position: "center",
+          icon: "success",
+          title: "Your account has been created",
+          showConfirmButton: false,
+          timer: 1500,
+        });
+        const newUser = {
+          name: data.name,
+          email: data.email,
+          role: "user",
+        };
+        axios
+          .post("http://localhost:5000/users", newUser)
+          .then((res) => console.log(res.data));
+        reset();
+        navigate("/");
       })
       .catch((err) => console.log(err));
   };

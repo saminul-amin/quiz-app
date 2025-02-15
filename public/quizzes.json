@@ -1,0 +1,49 @@
+{
+    "quizzes": [
+        {
+            "id": 1,
+            "title": "JavaScript Basics",
+            "description": "Test your knowledge on JavaScript fundamentals.",
+            "difficulty": "Beginner",
+            "questions": 10,
+            "time_limit": 10,
+            "type": "Open"
+        },
+        {
+            "id": 2,
+            "title": "React Essentials",
+            "description": "Assess your understanding of core React concepts.",
+            "difficulty": "Intermediate",
+            "questions": 15,
+            "time_limit": 15,
+            "type": "Private"
+        },
+        {
+            "id": 3,
+            "title": "Node.js and Express",
+            "description": "A quiz covering backend development with Node.js and Express.",
+            "difficulty": "Advanced",
+            "questions": 12,
+            "time_limit": 12,
+            "type": "Open"
+        },
+        {
+            "id": 4,
+            "title": "MongoDB & NoSQL Basics",
+            "description": "Evaluate your knowledge of MongoDB and NoSQL databases.",
+            "difficulty": "Intermediate",
+            "questions": 10,
+            "time_limit": 10,
+            "type": "Private"
+        },
+        {
+            "id": 5,
+            "title": "Full-Stack Development Challenge",
+            "description": "An ultimate quiz for full-stack web development skills.",
+            "difficulty": "Advanced",
+            "questions": 20,
+            "time_limit": 20,
+            "type": "Open"
+        }
+    ]
+}
