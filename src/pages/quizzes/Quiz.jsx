@@ -5,6 +5,7 @@ import Rules from "./Rules";
 import axios from "axios";
 import LoadingSpinner from "../../shared/LoadingSpinner";
 import { useQuery } from "@tanstack/react-query";
+import useAuth from "../../hooks/useAuth";
 
 const fetchQuizzes = async () => {
   const { data } = await axios.get("/quizzes.json");
@@ -17,6 +18,7 @@ export default function Quiz() {
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const { user } = useAuth();
   const {
     data: quizzes,
     isLoading,
@@ -38,6 +40,7 @@ export default function Quiz() {
 
   const quizDetails = quizzes.quizzes.filter((q) => q.id === parseInt(id))[0];
   const questions = quizDetails.questions;
+  // console.log(user.displayName);
 
   const handleSelectOption = (option) => {
     setSelectedAnswers((prev) => ({ ...prev, [currentQuestion]: option }));

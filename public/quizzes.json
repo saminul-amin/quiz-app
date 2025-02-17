@@ -12,14 +12,14 @@
             "questions": [
                 {
                     "id": 1,
-                    "question": "What is the capital of France?",
+                    "question": "'তুমি এমন ব্যক্তির মতো হও, যে দুনিয়াতে—'",
                     "options": [
-                        "Paris",
-                        "London",
-                        "Berlin",
-                        "Madrid"
+                        "দীর্ঘস্থায়ী বাসিন্দা",
+                        "একজন পর্যটক বা পথিক",
+                        "সর্বদা সম্পদ অর্জনে ব্যস্ত",
+                        "ভবিষ্যতের পরিকল্পনায় মগ্ন"
                     ],
-                    "correct": "Paris"
+                    "correct": "একজন পর্যটক বা পথিক"
                 },
                 {
                     "id": 2,
