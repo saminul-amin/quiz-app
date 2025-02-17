@@ -1,53 +1,43 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 import { motion } from "framer-motion";
+import Rules from "./Rules";
+import axios from "axios";
+import LoadingSpinner from "../../shared/LoadingSpinner";
+import { useQuery } from "@tanstack/react-query";
 
-const quizDetails = {
-  title: "Sample Quiz",
-  description:
-    "This quiz tests your knowledge on various topics. Answer carefully and try your best!",
-  totalQuestions: 5,
-  timeLimit: "10 minutes",
+const fetchQuizzes = async () => {
+  const { data } = await axios.get("/quizzes.json");
+  return data;
 };
 
-const questions = [
-  {
-    id: 1,
-    question: "What is the capital of France?",
-    options: ["Paris", "London", "Berlin", "Madrid"],
-    correct: "Paris",
-  },
-  {
-    id: 2,
-    question: "Which planet is known as the Red Planet?",
-    options: ["Earth", "Mars", "Jupiter", "Venus"],
-    correct: "Mars",
-  },
-  {
-    id: 3,
-    question: "Who wrote 'To Kill a Mockingbird'?",
-    options: ["Harper Lee", "J.K. Rowling", "Ernest Hemingway", "Mark Twain"],
-    correct: "Harper Lee",
-  },
-  {
-    id: 4,
-    question: "What is the largest ocean on Earth?",
-    options: ["Atlantic", "Indian", "Arctic", "Pacific"],
-    correct: "Pacific",
-  },
-  {
-    id: 5,
-    question: "Which element has the chemical symbol 'O'?",
-    options: ["Gold", "Oxygen", "Osmium", "Olive"],
-    correct: "Oxygen",
-  },
-];
-
 export default function Quiz() {
+  const { id } = useParams();
   const [quizStarted, setQuizStarted] = useState(false);
   const [currentQuestion, setCurrentQuestion] = useState(0);
   const [selectedAnswers, setSelectedAnswers] = useState({});
   const [quizCompleted, setQuizCompleted] = useState(false);
+  const {
+    data: quizzes,
+    isLoading,
+    error,
+  } = useQuery({ queryKey: ["quizzes"], queryFn: fetchQuizzes });
+
+  if (isLoading)
+    return (
+      <div className="text-center mt-10">
+        <LoadingSpinner />
+      </div>
+    );
+  if (error)
+    return (
+      <div className="text-center mt-10 text-red-500">
+        Error fetching quizzes
+      </div>
+    );
+
+  const quizDetails = quizzes.quizzes.filter((q) => q.id === parseInt(id))[0];
+  const questions = quizDetails.questions;
 
   const handleSelectOption = (option) => {
     setSelectedAnswers((prev) => ({ ...prev, [currentQuestion]: option }));
@@ -64,9 +54,9 @@ export default function Quiz() {
   };
 
   return (
-    <div className="flex items-center justify-center h-screen bg-gradient-to-b from-white to-stone-300">
+    <div className="flex items-center justify-center bg-gradient-to-b from-white to-stone-300 py-12 min-h-screen">
       <motion.div
-        className="w-96 lg:w-1/3 bg-white p-8 rounded-lg shadow-md text-center"
+        className="w-2/3 bg-white p-8 rounded-lg shadow-md text-center"
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         transition={{ duration: 0.5 }}
@@ -76,20 +66,21 @@ export default function Quiz() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5 }}
+            className="overflow-y-auto"
           >
             <h2 className="text-xl font-bold mb-2">{quizDetails.title}</h2>
             <p className="text-gray-700 mb-2">{quizDetails.description}</p>
             <p className="text-gray-600 mb-4">
-              Total Questions: {quizDetails.totalQuestions} | Time Limit:{" "}
-              {quizDetails.timeLimit}
+              Total Questions: {quizDetails.total_questions} | Time Limit:{" "}
+              {quizDetails.time_limit}
             </p>
-            <div className="flex justify-between">
-              <button
-                className="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded"
-                onClick={() => alert("Going back")}
-              >
-                Go Back
-              </button>
+            <Rules />
+            <div className="flex justify-between mt-6">
+              <Link to="/quizzes">
+                <button className="bg-gray-500 hover:bg-gray-700 text-white px-4 py-2 rounded">
+                  Go Back
+                </button>
+              </Link>
               <button
                 className="bg-stone-500 hover:bg-stone-700 text-white px-4 py-2 rounded"
                 onClick={() => setQuizStarted(true)}

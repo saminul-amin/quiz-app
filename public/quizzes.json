@@ -3,12 +3,69 @@
         {
             "id": 1,
             "title": "৪০ হাদিস",
-            "description": "Test your knowledge on JavaScript fundamentals.",
+            "description": "এই কুইজে ইমাম নববির (রহিমাহুল্লাহ) সংকলিত গুরুত্বপূর্ণ হাদিসগুলো থেকে নির্বাচিত প্রশ্ন দেওয়া হয়েছে। জ্ঞান অর্জন ও যাচাইয়ের জন্য এটি একটি দারুণ সুযোগ!",
             "difficulty": "Beginner",
-            "questions": "৩০",
+            "total_questions": "৩০",
             "time_limit": 10,
             "setter": "Md. Saminul Amin",
-            "type": "Open"
+            "type": "Open",
+            "questions": [
+                {
+                    "id": 1,
+                    "question": "What is the capital of France?",
+                    "options": [
+                        "Paris",
+                        "London",
+                        "Berlin",
+                        "Madrid"
+                    ],
+                    "correct": "Paris"
+                },
+                {
+                    "id": 2,
+                    "question": "Which planet is known as the Red Planet?",
+                    "options": [
+                        "Earth",
+                        "Mars",
+                        "Jupiter",
+                        "Venus"
+                    ],
+                    "correct": "Mars"
+                },
+                {
+                    "id": 3,
+                    "question": "Who wrote 'To Kill a Mockingbird'?",
+                    "options": [
+                        "Harper Lee",
+                        "J.K. Rowling",
+                        "Ernest Hemingway",
+                        "Mark Twain"
+                    ],
+                    "correct": "Harper Lee"
+                },
+                {
+                    "id": 4,
+                    "question": "What is the largest ocean on Earth?",
+                    "options": [
+                        "Atlantic",
+                        "Indian",
+                        "Arctic",
+                        "Pacific"
+                    ],
+                    "correct": "Pacific"
+                },
+                {
+                    "id": 5,
+                    "question": "Which element has the chemical symbol 'O'?",
+                    "options": [
+                        "Gold",
+                        "Oxygen",
+                        "Osmium",
+                        "Olive"
+                    ],
+                    "correct": "Oxygen"
+                }
+            ]
         },
         {
             "id": 2,
@@ -19,36 +76,6 @@
             "time_limit": 15,
             "setter": "Md. Saminul Amin",
             "type": "Private"
-        },
-        {
-            "id": 3,
-            "title": "Node.js and Express",
-            "description": "A quiz covering backend development with Node.js and Express.",
-            "difficulty": "Advanced",
-            "questions": 12,
-            "time_limit": 12,
-            "setter": "Md. Saminul Amin",
-            "type": "Open"
-        },
-        {
-            "id": 4,
-            "title": "MongoDB & NoSQL Basics",
-            "description": "Evaluate your knowledge of MongoDB and NoSQL databases.",
-            "difficulty": "Intermediate",
-            "questions": 10,
-            "time_limit": 10,
-            "setter": "Md. Saminul Amin",
-            "type": "Private"
-        },
-        {
-            "id": 5,
-            "title": "Full-Stack Development Challenge",
-            "description": "An ultimate quiz for full-stack web development skills.",
-            "difficulty": "Advanced",
-            "questions": 20,
-            "time_limit": 20,
-            "setter": "Md. Saminul Amin",
-            "type": "Open"
         }
     ]
 }

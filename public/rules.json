@@ -1,0 +1,12 @@
+{
+    "quiz_rules": [
+        "A participant can attempt a particular quiz exactly once.",
+        "Each question must be answered within the allocated time, or it will be skipped.",
+        "Switching browser tabs during the quiz may result in penalties or disqualification.",
+        "Correct answers earn points; incorrect answers do not incur negative marking.",
+        "Quizzes can be either open to all or password-protected for private access.",
+        "Participants cannot edit their responses after submitting an answer.",
+        "The leaderboard will display the top scorers after quiz completion.",
+        "Final results will be available only after the quiz ends and cannot be contested."
+    ]
+}

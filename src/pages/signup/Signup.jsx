@@ -13,7 +13,7 @@ const Signup = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { createUser } = useAuth();
+  const { createUser, updateUserProfile, setUser } = useAuth();
   const navigate = useNavigate();
 
   const onSubmit = (data) => {
@@ -21,23 +21,28 @@ const Signup = () => {
     createUser(data.email, data.password)
       .then((result) => {
         console.log(result.user);
-        Swal.fire({
-          position: "center",
-          icon: "success",
-          title: "Your account has been created",
-          showConfirmButton: false,
-          timer: 1500,
-        });
-        const newUser = {
-          name: data.name,
-          email: data.email,
-          role: "user",
-        };
-        axios
-          .post("http://localhost:5000/users", newUser)
-          .then((res) => console.log(res.data));
-        reset();
-        navigate("/");
+        setUser(result.user);
+        updateUserProfile({ displayName: data.name })
+          .then(() => {
+            Swal.fire({
+              position: "center",
+              icon: "success",
+              title: "Your account has been created",
+              showConfirmButton: false,
+              timer: 1500,
+            });
+            const newUser = {
+              name: data.name,
+              email: data.email,
+              role: "user",
+            };
+            axios
+              .post("http://localhost:5000/users", newUser)
+              .then((res) => console.log(res.data));
+            reset();
+            navigate("/");
+          })
+          .catch((err) => console.log(err));
       })
       .catch((err) => console.log(err));
   };

@@ -45,7 +45,7 @@ export default function Quizzes() {
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {quizzes.quizzes.map((quiz) => (
           <motion.div
-            key={quiz._id}
+            key={quiz.id}
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
@@ -60,14 +60,19 @@ export default function Quizzes() {
             <p className="text-xs bg-slate-300 px-4 py-1 rounded-full object-fit badge mb-2">
               {quiz.difficulty}
             </p>
-            <p className="text-stone-700 mb-2">{quiz.description}</p>
+            <p
+              className="text-stone-700 mb-2 leading-7"
+              style={{ fontFamily: "Tiro Bangla, serif" }}
+            >
+              {quiz.description}
+            </p>
             <p className="text-stone-700 mb-2 font-bold">
               Total Questions:{" "}
               <span
                 className="font-normal"
                 style={{ fontFamily: "Tiro Bangla, serif" }}
               >
-                {quiz.questions}
+                {quiz.total_questions}
               </span>
             </p>
             <p className="text-stone-700 mb-4 font-bold">
@@ -95,17 +100,27 @@ export default function Quizzes() {
             className="modal-box bg-white shadow-lg rounded-lg p-6"
             onClick={(e) => e.stopPropagation()} // Prevent closing when clicking inside
           >
-            <h2 className="font-bold text-lg text-stone-800">
+            <h2
+              className="font-bold text-lg text-stone-800"
+              style={{ fontFamily: "Tiro Bangla, serif" }}
+            >
               {selectedQuiz.title}
             </h2>
-            <p className="py-4 text-stone-700">{selectedQuiz.description}</p>
+            <p
+              className="py-4 text-stone-700"
+              style={{ fontFamily: "Tiro Bangla, serif" }}
+            >
+              {selectedQuiz.description}
+            </p>
             <p className="text-stone-700 mb-2 font-bold">
               Difficulty:{" "}
               <span className="font-normal">{selectedQuiz.difficulty}</span>
             </p>
             <p className="text-stone-700 mb-2 font-bold">
               Total Questions:{" "}
-              <span className="font-normal">{selectedQuiz.questions}</span>
+              <span className="font-normal" style={{ fontFamily: "Tiro Bangla, serif" }}>
+                {selectedQuiz.total_questions}
+              </span>
             </p>
             <p className="text-stone-700 mb-4 font-bold">
               Setter: <span className="font-normal">{selectedQuiz.setter}</span>
@@ -117,7 +132,7 @@ export default function Quizzes() {
               >
                 Cancel
               </button>
-              <Link to="/quiz">
+              <Link to={`/quiz/${selectedQuiz.id}`}>
                 <button className="btn bg-stone-500 text-white rounded-full px-4 py-2 hover:bg-stone-700 text-md">
                   Start Quiz
                 </button>
