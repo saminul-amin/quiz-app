@@ -6,6 +6,7 @@ import Signup from "../pages/signup/Signup";
 import Quizzes from "../pages/quizzes/Quizzes";
 import Contact from "../pages/contact/Contact";
 import Quiz from "../pages/quizzes/Quiz";
+import QuizCreator from "../pages/quizzes/QuizCreator";
 
 const router = createBrowserRouter([
   {
@@ -18,6 +19,7 @@ const router = createBrowserRouter([
       { path: "quizzes", element: <Quizzes /> },
       { path: "contact", element: <Contact /> },
       { path: "quiz/:id", element: <Quiz /> },
+      { path: "create-quiz", element: <QuizCreator /> },
     ],
   },
 ]);

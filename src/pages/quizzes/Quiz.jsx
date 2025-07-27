@@ -102,6 +102,12 @@ export default function Quiz() {
             <p className="text-gray-700 mb-4">
               Your final score: {calculateScore()} / {questions.length}
             </p>
+            <p className="text-gray-700 mb-4 text-lg">
+              Final Score of{" "}
+              <strong>
+                {user.displayName}: {calculateScore()}
+              </strong>
+            </p>
             <Link to="/quizzes">
               <button className="btn mt-4 bg-stone-500 text-white rounded-full px-6 hover:bg-stone-700 text-md">
                 Quizzes Page

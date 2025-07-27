@@ -14,7 +14,7 @@ const HeroSection = () => {
         >
           {/* Main Heading */}
           <motion.h1
-            className="text-4xl md:text-5xl font-bold leading-tight"
+            className="text-4xl md:text-5xl font-bold leading-tight text-stone-700"
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 1, delay: 0.3 }}
@@ -46,7 +46,7 @@ const HeroSection = () => {
               </button>
             </Link>
             <Link to="/quizzes">
-              <button className="px-6 py-3 bg-white text-blue-800 font-semibold rounded-full shadow-lg hover:bg-stone-300 transition transform hover:scale-105">
+              <button className="px-6 py-3 bg-white text-stone-600 font-semibold rounded-full shadow-lg hover:bg-stone-300 transition transform hover:scale-105">
                 Explore Open Quizzes
               </button>
             </Link>
