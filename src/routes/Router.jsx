@@ -6,7 +6,7 @@ import Signup from "../pages/signup/Signup";
 import Quizzes from "../pages/quizzes/Quizzes";
 import Contact from "../pages/contact/Contact";
 import Quiz from "../pages/quizzes/Quiz";
-import QuizCreator from "../pages/quizzes/QuizCreator";
+import QuizCreator from "../pages/quizzes/QuizCreator/QuizCreator";
 
 const router = createBrowserRouter([
   {
